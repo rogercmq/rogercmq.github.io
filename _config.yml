@@ -2,16 +2,16 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://mazhuang.org
+url: https://rogercmq.github.io/
 date_format: "ordinal"
-title: 码志
-subtitle: "公众号：闷骚的程序员"
-description: "马壮的个人博客，公众号：闷骚的程序员"
-keywords: 码志, Zhuang Ma, mzlogin, mazhuang, 闷骚的程序员
+title: 玛丽莲梦奇
+subtitle: "玛丽莲梦奇的 Github 个人主页"
+description: ""
+keywords: 玛丽莲梦奇, 论文笔记, 乐评影评, 时事评论
 timezone: Asia/Shanghai
 encoding: "utf-8"
-side_bar_repo_limit: 5
-repository: mzlogin/mzlogin.github.io
+side_bar_repo_limit: 3
+repository: rogercmq/rogercmq.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
@@ -24,7 +24,7 @@ components:
     # 不蒜子访问统计
     busuanzi:
         enabled: true
-        start_date: 2020-05-03
+        start_date: 2020-06-16
 # 压缩页面内容
 compress_html:
   clippings: all
@@ -36,12 +36,12 @@ word_count:
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Zhuang Ma
+author: Mengqi Cao
 organization: 
 organization_url: 
-github_username: mzlogin
-location: Wuhan, China
-email: chumpma@gmail.com
+github_username: rogercmq
+location: Nanjing, China
+email: rogercmq0452@gmail.com
 
 # ---------------- #
 #    Navigation    #
@@ -63,13 +63,13 @@ navs:
 #     href: /open-source/
 #     label: 开源
 
-  -
-    href: /wiki/
-    label: 维基
+#  -
+#    href: /wiki/
+#    label: 维基
 
-  -
-    href: /links/
-    label: 链接
+#  -
+#    href: /links/
+#    label: 链接
 
   -
     href: /about/
@@ -118,14 +118,14 @@ disqus:
     username: 
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: mzlogin
+    owner: rogercmq
     repo: blog-comments
     oauth:
         client_id: d2e1cbbd298958076462
         client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: mzlogin
+    owner: rogercmq
     repo: blog-comments
     clientID: d2e1cbbd298958076462
     clientSecret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
