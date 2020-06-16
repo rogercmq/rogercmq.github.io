@@ -1,18 +1,14 @@
 ---
 layout: page
 title: About
-description: 打码改变世界
-keywords: Zhuang Ma, 马壮
+description: TODO
+keywords: Mengqi Cao
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-我是马壮，码而生，码而立。
-
-仰慕「优雅编码的艺术」。
-
-坚信熟能生巧，努力改变人生。
+我是**曹梦奇**，2020年夏天毕业于上海交通大学计算机科学专业（IEEE试点班），已南京大学人工智能学院预录取。最喜欢的国内外 Rapper 是 AR 和 J.Cole，最喜欢的摇滚乐队是高旗&超载乐队。最近在看的书是小椴的《杯雪》，也正在刷伍迪艾伦的电影。
 
 ## 联系
 
@@ -29,7 +25,7 @@ permalink: /about/
 </ul>
 
 
-## Skill Keywords
+## 擅长调用各种API
 
 {% for skill in site.data.skills %}
 ### {{ skill.name }}
