@@ -80,8 +80,3 @@ two-stream 卷积网络对于长范围时间结构的建模无能为力，主要
 针对时间（光流）和空间（RGB）分别提出了以下两种网络输入：
 
 ![](/images/VALSE/actionRecognization14.png)
-
-## 推荐的文章：Inflated 3D (I3D) ConvNets
-
-
-TODO
