@@ -75,6 +75,18 @@
     {% if site.url contains 'mazhuang.org' %}
     <script data-ad-client="ca-pub-7093222719567591" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     {% endif %}
+
+    <!-- 以下两个script为数学公式 -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+        }
+    });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> 
+
 </head>
 <body class="{{ page.class }}" data-mz="{{ page.class }}">
     <header class="site-header">
