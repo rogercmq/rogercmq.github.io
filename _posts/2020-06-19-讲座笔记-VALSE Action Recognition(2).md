@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 讲座笔记 -- VALSE Webinar Action Recognization (2)
-categories: [LectureNotes, ActionRecognization]
+title: 讲座笔记 -- VALSE Webinar Action Recognition (2)
+categories: [LectureNotes, ActionRecognition]
 description: 
 keywords: 
 ---
