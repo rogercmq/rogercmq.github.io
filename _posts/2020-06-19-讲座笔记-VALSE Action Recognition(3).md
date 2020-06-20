@@ -8,7 +8,7 @@ keywords:
 
 # 乔宇：复杂视频序列的深度表征与理解方法 (3)
 
-## Inflated 3D (I3D) ConvNets
+## Inflated 3D (I3D) ConvNets —— 3D卷积模型
 
 > Joao Carreira et al., Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset, CVPR2017
 >
@@ -32,7 +32,7 @@ keywords:
 
 ![](https://pic4.zhimg.com/80/v2-7b36ff93c321b3d9f35e59512467e973_720w.jpg)
 
-## Spatiotemporal Separable 3D (S3D) Convolutions
+## Spatiotemporal Separable 3D (S3D) Convolutions —— 3D分解模型
 
 > Saining Xie et al., Rethinking Spatiotemporal Feature Learning For Video Understanding, arxiv, 2017
 
@@ -47,7 +47,7 @@ keywords:
 
 ![](/images/VALSE/actionRecognization15.png)
 
-## R(2+1)D
+## R(2+1)D —— 3D分解模型
 
 > Tran, Du, et al. "A closer look at spatiotemporal convolutions for action recognition." Proceedings of the IEEE conference on Computer Vision and Pattern Recognition. 2018.
 
@@ -87,13 +87,13 @@ R 代表 ResNet， 即残差网络。
 
  作者采用了224x224的输入训练网路，发现和112x112的输入结果只有微小的差距。 
 
-## Channel-Separated Convolutional Network (CSN)
+## Channel-Separated Convolutional Network (CSN) —— 3D分解模型
 
 > Tran, Du, et al. "Video classification with channel-separated convolutional networks." Proceedings of the IEEE International Conference on Computer Vision. 2019.
 
 ![](/images/VALSE/actionRecognization16.png)
 
-## ARTNet
+## ARTNet —— 时空关系建模
 
 > Limin Wang et al., Appearance-and-Relation Networks for Video Classification, CVPR2018
 
@@ -104,34 +104,60 @@ ARTNet是由多个名为SMART的block堆叠而成。SMART模块的目标是从RG
 - **Appearance branch.** 这个分支作用于单帧的图像上，即对输入的视频帧使用 2D conv 来捕获每一帧的 spatial 信息。然后后面接 BN 和 ReLU。
 - **Relation branch.** 这个分支作用在 stacked连续帧 上，用于捕获帧与帧之间的关系。在paper中有讨论过对于Relation的建模用 multiplication interactions 比较合适（具体看原文），所以文章提出了 square-pooling 的结构用于建模 temporal 的信息。具体地，首先在视频上用 3D conv，然后做 square，再 cross-channel pooling。 
 
-## Non-local
+## Non-local —— 时空跨度依赖模型
 
 > Wang, Xiaolong, et al. "Non-local neural networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018.
 
 ![](/images/VALSE/actionRecognization18.png)
 
-深层神经网络中，捕获远距离相关性是至关重要的：对于顺序数据(例如语音、语言)，递归操作是建模远程依赖性的主要解决方案；对于图像数据，长距离依赖关系是由深层次的卷积运算所形成的大感受野来建模的。
+深层神经网络中，捕获远距离相关性是至关重要的：对于顺序数据(例如语音、语言)，递归操作是建模远程依赖性的主要解决方案；对于图像数据，长距离依赖关系是由深层次的卷积运算所形成的大感受野来建模的。卷积操作和递归操作都会在空间或时间上处理一个局部邻域；因此，只有反复应用这些操作，逐步通过数据传播信号时，才能捕捉到长距离依赖关系。
 
-卷积操作和递归操作都会在空间或时间上处理一个局部邻域；因此，只有反复应用这些操作，逐步通过数据传播信号时，才能捕捉到长距离依赖关系。
+但重复进行本地操作会有几个限制：首先，计算效率很低；其次，会造成优化方面的困难；最后，使得多跳跃的依赖性建模变得困难，例如，当需要在远程位置之间来回传递信息时。
 
-
-
-但重复进行本地操作会有几个限制
-
-首先，计算效率很低
-其次，会造成优化方面的困难
-最后，使得多跳跃的依赖性建模变得困难，例如，当需要在远程位置之间来回传递信息时。
-
-
-在本文中，我们将非局部运算作为一种有效的、简单的、通用的部件来使深层神经网络捕获远距离依赖关系
-
-我们提出的非局部运算是经典的非局部平均运算在计算机视觉中的推广
-直观地说，非局部操作将某个位置的响应计算为输入特征映射中所有位置的特征的加权和。
-
-位置可以是在空间、时间或时空中，这意味着我们的操作适用于图像、序列和视频问题
+在本文中，我们将非局部运算作为一种有效的、简单的、通用的部件来使深层神经网络捕获远距离依赖关系。我们提出的非局部运算是经典的非局部平均运算在计算机视觉中的推广，直观地说，非局部操作将某个位置的响应计算为输入特征映射中所有位置的特征的加权和。位置可以是在空间、时间或时空中，这意味着我们的操作适用于图像、序列和视频问题。
 
 使用非局部操作有几个优点：
 
-与循环和卷积操作的渐进行为相反，非本地操作通过直接计算任意两个位置之间的交互关系来捕获远程依赖性，不论它们的位置距离如何
-非局部操作效率很高，即使网络只有很少层也能取得最佳效果
-非局部操作输入大小是非固定的，可以很容易地与其他操作相结合（例如使用的卷积操作）
+- 与循环和卷积操作的渐进行为相反，非本地操作通过直接计算任意两个位置之间的交互关系来捕获远程依赖性，不论它们的位置距离如何；
+- 非局部操作效率很高，即使网络只有很少层也能取得最佳效果；
+- 非局部操作输入大小是非固定的，可以很容易地与其他操作相结合（例如使用的卷积操作）。
+
+![](/images/VALSE/actionRecognization19.png)
+
+## SlowFast —— 多尺度融合模型
+
+> Feichtenhofer, Christoph, et al. "Slowfast networks for video recognition." Proceedings of the IEEE International Conference on Computer Vision. 2019.
+
+![](/images/VALSE/actionRecognization20.png)
+
+Slow pathway 的主要作用是做空间的语义处理，所以它的特点是分辨率高抽帧少（只关注图像特征），网络规模大（抽象语义特征）。Fast pathway 的主要作用是做时序的信息处理，所以它的特点是分辨率低抽帧多（考虑动作连续性），网络规模小（不需要获取复杂的特征）。
+
+**设计思想：**
+
+- 作者认为在以往对视频的处理中，大家都习惯性的认为视频处理是图像处理的自然延伸。在处理图像时，我们均衡的处理二维数据(x, y)，毕竟x, y都是相同的图像属性。而**在处理视频数据(x, y, t)时，t与(x, y)是不同属性, 所以我们不能简单的将它们均衡处理。**
+- 作者参考了生物学中关于视网膜神经细胞的研究，研究发现视网膜神经细胞中80%对空间和色彩信息敏感，20%对时序信息敏感。所以作者在设计SlowFast模型时，Slow网络规模占80%，Fast网络规模占20%。
+
+<img src="https://pic4.zhimg.com/80/v2-14655194d8fc89f5acb5d4884854636f_720w.jpg" style="zoom: 40%;" />
+
+**Slow 模型与 Fast 模型的拼接：**
+
+因为 Slow 输出为 {T, S^2, C}，Fast 输出为{$\alpha$T, S^2, $\beta$C}，两者无法直接融合。为此作者提出了三种reshape方式。两者输出匹配后可以通过拼接或（带权重）相加求和的方式进行融合。
+
+1. Time-to-channel： transpose {$\alpha$T, S^2, $\beta$C} to {T, S^2, $\alpha\beta$C}
+2. Time-strided sampling：从$\alpha$T中抽帧，每 $\alpha$ 帧中抽一帧，变为{T, S^2, $\beta$C}
+3. Time-stride convolution：通过3D卷积网络做reshape操作。
+
+<img src="https://img-blog.csdnimg.cn/2020041515192146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE2MDkwNjM=,size_16,color_FFFFFF,t_70" style="zoom:50%;" />
+
+<img src="https://img-blog.csdnimg.cn/20200415150740974.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE2MDkwNjM=,size_16,color_FFFFFF,t_70" style="zoom:50%;" />
+
+该方法甚至不需要预训练：
+
+<img src="https://img-blog.csdnimg.cn/2020041515195828.png" style="zoom:60%;" />
+
+## Temporal Shift Module (TSM) —— 面向3D任务的2D轻量化模型
+
+> Lin, Ji, Chuang Gan, and **Song Han**. "Tsm: Temporal shift module for efficient video understanding." Proceedings of the IEEE International Conference on Computer Vision. 2019.
+
+![](/images/VALSE/actionRecognization21.png)
+
