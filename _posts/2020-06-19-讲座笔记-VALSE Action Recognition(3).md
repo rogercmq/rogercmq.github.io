@@ -161,3 +161,38 @@ Slow pathway 的主要作用是做空间的语义处理，所以它的特点是�
 
 ![](/images/VALSE/actionRecognization21.png)
 
+在推理阶段，对于每一帧，保存每个残差块的前1/8的特征图并缓存在寄存器中。对于下一帧，用缓存的特征图替换当前特征图的前1/8。即使用7/8的当前特征图和1/8的旧特征图组合来生成下一层并重复。使用单向TSM进行在线视频识别具有几个独特的优势：
+
+- 低延迟推断。 对于每个帧，我们只需要替换和缓存1/8的特征，而不需要进行任何额外的计算。 因此，给出全帧预测的延迟几乎与2D CNN基线相同。 像ECO这样的现有方法使用多帧来给出一个预测，这可能在在线预测期间引入大的延迟。
+- 内存消耗低。 由于我们只缓存了内存中的一小部分功能，因此内存消耗很低。 对于ResNet-50，我们只需要3.8MB内存缓存来存储中间功能。
+- 多级时间融合。 大多数在线方法像TRN或中级时间融合ECO等特征提取后实现晚期时间融合，而我们的TSM能够实现所有级别的时间融合。 通过实验我们发现多级时间融合对于复杂的时间建模非常重要。
+
+![](https://pic1.zhimg.com/80/v2-27eff0b884ddb445fd1fee1e472a98ac_720w.jpg)
+
+ ![[公式]](https://www.zhihu.com/equation?tex=zero+) ![[公式]](https://www.zhihu.com/equation?tex=padding) 与 ![[公式]](https://www.zhihu.com/equation?tex=circulant) ![[公式]](https://www.zhihu.com/equation?tex=padding) 这两种方法我们必须要注意到一个事情，作者原文中也说到，循环的方式会打乱时序上的先后关系，所以在对时序上要求比较高的数据集，其效果不及 ![[公式]](https://www.zhihu.com/equation?tex=zero) 方法。 
+
+**研究目的：**
+
+既然卷积操作包括了shift和multiply-accumulate, 所以考虑在时间维度上也进行相应的操作看看效果咋样。文章提到的这种shift的方法在spatial中也有用到过，但是通常会面临两个问题：
+
+1. 并不高效，尽管shift操作是基本zero FLOP的，但是这也同时会导致数据移动，这一步会产生延迟，而且尤其在视频文件中，该现象会更加显著，因为视频是5个维度的；
+2. 并不准确，如果shifting太多的channels的话将会损坏原有帧的空间，也就是移动了，那么就不完整了，并不包含所有的该张图片本身应该具有的信息
+
+**上面两个问题的解决：**
+
+1. 改进的shifts策略：并不是shift所有的channels，而是只选择性的shift其中的一部分，该策略能够有效的减少数据移动所带来的时间复杂度；
+2. TSM并不是直接被插入到从前往后的干道中的，而是以旁路的形式进行，如下图(b)，因此在获得了时序信息的同时不会对二维卷积的空间信息进行损害！
+
+![](https://img-blog.csdnimg.cn/20190910233625403.png)
+
+**实验结果：**
+
+![](https://pic4.zhimg.com/80/v2-a3f99779487813489e929026658bd2a7_720w.jpg)
+
+## SmallBigNet —— 演讲者的工作
+
+> Xianhang Li , Yali Wang, Zhipeng Zhou, Yu Qiao SmallBigNet: Integrating Core and Contextual Views for Video Classification，CVPR 2020
+
+![](/images/VALSE/actionRecognization22.png)
+
+> Temporal convolution has been widely used for video classification. However, it is performed on spatio-temporal contexts in a limited view, which often weakens its capacity of learning video representation. To alleviate this problem, we propose a concise and novel SmallBig network, with the cooperation of small and big views. For the current time step, **the small view branch is used to learn the core semantics, while the big view branch is used to capture the contextual semantics**. Unlike raditional temporal convolution, the big view branch can provide the small view branch with the most activated video features from a broader 3D receptive field. Via aggregating such big view contexts, the small view branch can learn more robust and discriminative spatio-temporal representations for video classification. Furthermore, **we propose to share convolution in the small and big view branch, which improves model compactness as well as alleviates overfitting**. As a result, our SmallBigNet achieves a comparable model size like 2D CNNs, while boosting accuracy like 3D CNNs. We conduct extensive experiments on the large-scale video benchmarks, e.g., Kinetics400, Something-Something V1 and V2. Our SmallBig network outperforms a number of recent state-of-the-art approaches, in terms of accuracy and/or efficiency. The codes and models will be available on https://github.com/xhl-video/SmallBigNet.
