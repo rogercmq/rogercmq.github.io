@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 讲座笔记 -- VALSE Webinar Network Compression(1)
+title: 讲座笔记 -- VALSE Webinar Network Compression
 categories: [LectureNotes, NetworkPruning]
 description: 
 keywords: 
 ---
 
-## 2020-06-23-讲座笔记-VALSE Network Compression(1)
+# 2020-06-23-讲座笔记-VALSE Network Compression
 
 # VALSE Webinar 2020-14 期
 
