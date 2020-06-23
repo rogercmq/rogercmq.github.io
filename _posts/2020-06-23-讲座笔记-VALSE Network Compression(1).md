@@ -50,3 +50,8 @@ AdderNet: ResNet50 可达到 top-1 76% 的准确率。
 
 ## Ultra-low-bit Neural Network Quantization —— 王培松（中科院自动化所）讲座摘录
 
+**主要是讲定点量化的工作。**定点数硬件友好，因此可提速并节省芯片面积。
+
+![](/images/VALSE/modelCompression8.png)
+
+![](/images/VALSE/modelCompression9.png)
