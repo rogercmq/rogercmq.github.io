@@ -6,10 +6,6 @@ description:
 keywords: 
 ---
 
-
-
-
-
 **本节内容：CPU与GPU互动模式，GPU线程组织模型（不停强化），GPU存储模型，基本的编程问题。**
 
 # CPU/GPU 互动模式 
@@ -34,7 +30,43 @@ GPU 与 CPU 通过 PCIE 总线互连，开销较大。
 
 # GPU线程组织模型
 
-grid --> block --> thread
+grid --> block (线程块) --> thread, 实现了快速有效的索引
 
 ![](/images/CUDA/18.png)
+
+![](/images/CUDA/19.png)
+
+# GPU线程映射关系
+
+![](/images/CUDA/20.png)
+
+CPU: scalar SSE --> vector SSE --> multi cores
+
+# GPU内存和线程等关系
+
+![](/images/CUDA/21.png)
+
+# GPU编程模型
+
+常规意义的GPU用于处理图形图像
+
+操作于像素，每个像素的操作都类似
+
+可以应用SIMD（数据并行分割）--> SIMT
+
+关于SIMT：
+
+- GPU版本的SIMD
+- 大量线程模型获得高度并行
+- 线程切换获得延迟掩藏
+- 多个线程执行相同的指令流
+- GPU大量线程承载与调度
+
+# CUDA编程模式
+
+![](/images/CUDA/22.png)
+
+![](/images/CUDA/23.png)
+
+\_\_device\_\_, \_\_global\_\_, \_\_host\_\_
 
