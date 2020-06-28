@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 论文笔记 -- Low Memory Neural Network Training: A Technique Report
+title: 论文笔记 -- Low Memory Neural Network Training (A Technique Report)
 categories: [PaperNotes, NetworkTrainingAcceleration]
 description: 
 keywords: 
