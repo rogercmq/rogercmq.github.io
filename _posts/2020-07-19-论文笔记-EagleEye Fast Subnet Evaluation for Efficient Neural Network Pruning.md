@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 论文笔记 -- EagleEye Fast Subnet Evaluation for Efficient Neural Network Pruning
-categories: [PaperNotes, ActionRecognition]
+categories: [PaperNotes, NetworkPruning]
 description: 
 keywords: 
 ---
