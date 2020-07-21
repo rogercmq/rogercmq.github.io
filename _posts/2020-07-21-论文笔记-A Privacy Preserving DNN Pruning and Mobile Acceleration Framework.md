@@ -1,0 +1,45 @@
+---
+layout: post
+title: 论文笔记 -- A Privacy Preserving DNN Pruning and Mobile Acceleration Framework
+categories: [PaperNotes, NetworkPruning]
+description: 
+keywords: 
+---
+
+Yanzhi Wang Group
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-1.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-2.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-3.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-4.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-5.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-6.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-7.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-8.png)
+
+
+
+![](/images/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework/Yanzhi_Wang_A_Privacy_Preserving_DNN_Pruning_and_Mobile_Acceleration_Framework-9.png)
