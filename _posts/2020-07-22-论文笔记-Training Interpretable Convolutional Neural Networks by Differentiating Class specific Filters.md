@@ -6,7 +6,7 @@ description:
 keywords: 
 ---
 
-《Training Interpretable Convolutional Neural Networks by Differentiating Class specific Filters》（ECCV 2020）
+Training Interpretable Convolutional Neural Networks by Differentiating Class specific Filters（ECCV 2020）
 
 ![](/images/ECCV2020_THU_Training_Interpretable_Convolutional_Neural_Networks_by_Differentiating_Class_specific_Filters/001.jpg)
 
