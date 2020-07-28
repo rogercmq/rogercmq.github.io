@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 论文笔记 -- Conditional Channel Gated Networks for Task-Aware Continual Learning
-categories: [PaperNotes, 2DCNN]
+categories: [PaperNotes, ContinualLearning]
 description: 
 keywords: 
 ---
