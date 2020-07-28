@@ -128,12 +128,31 @@ task classifier 的训练需要部分以前任务的数据样本，作者称此�
 
   > [34] Overcoming catastrophic forgetting with hard attention to the task. International Conference on Machine Learning, 2018.
 
----
-
-未完待续
+![](/images/posts/continuallearning/9.png)
 
 ## 4.3. Class-incremental with episodic memory
 
+三篇 baseline method：
+
+- Full replay: upper bound performance given by replay to the network of an unlimited number of examples.
+- iCaRL [29]: an approach based on a nearest-neighbor classifier exploiting examples in the buffer. We report the performances both with the original buffer-filling strategy (iCaRL-mean) and with the randomized algorithm used for our model (iCaRL-rand);
+- A-GEM [5]: a buffer-based method correcting parameter updates on the current task so that they don’t contradict the gradient computed on the stored examples.
+
+![](/images/posts/continuallearning/8.png)
+
 ## 4.4. Class-incremental with generative memory
 
+baseline method: DGM
+
+> DGM [28] is the state-of-the-art approach, which proposes a class-conditional GAN architecture paired with a hard attention mechanism similar to the one of HAT [34].
+
 ## 4.5. Model analysis
+
+**Episodic vs. generative memory** 在相同 Memory consumption (单位是MB) 的条件下，使用真实数据得到的精度会更高。
+
+**On the cost of inference** 虽然 gate module 引入了额外的参数，但是在某些简单任务（SPLIT-CIFAR10）的推理阶段依然会为模型带来 MAC 数的降低。
+
+> *我的问题：为什么 class-incremental 场景下  MACs 会单调递增？只是因为 task classifier 的参数量增加了吗？* 
+
+<img src="/images/posts/continuallearning/10.png" style="zoom:50%;" />
+
