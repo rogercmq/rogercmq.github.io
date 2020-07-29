@@ -8,7 +8,7 @@ keywords:
 
 Video Modeling with Correlation Networks (CVPR2020)
 
-<img src="../images/posts/CorrelationNetwork/1.png" style="zoom:43%;" />
+<img src="/images/posts/CorrelationNetwork/1.png" style="zoom:43%;" />
 
 # 1. Introduction
 
@@ -66,19 +66,19 @@ Video Modeling with Correlation Networks (CVPR2020)
 
 # 3. Correlation Operator
 
-<img src="../images/posts/CorrelationNetwork/2.png" style="zoom:100%;" />
+<img src="/images/posts/CorrelationNetwork/2.png" style="zoom:100%;" />
 
 ## Background: Correlation operator for matching
 
 本小节对应 Figure 1(a) 的情况。
 
-<img src="../images/posts/CorrelationNetwork/5.png" style="zoom:50%;" />
+<img src="/images/posts/CorrelationNetwork/5.png" style="zoom:50%;" />
 
 > *我的问题：这个部分难道不是在介绍3D卷积的计算原理吗？不同的是 (i,j) 和 (i',j') 对应的都是 RGB patch。*
 
 一个特征图由 [C, H, W] 三个维度构成。从图片中截取一个patch，当该patch只对应一个像素点时，3D patch 退化为 1D patch vector。对于两张图片 A 和 B 分别在 (i,j) 和 (i',j') 位置取 single pixel patch，patch vector 的 correlation 可以表示为点乘，此时 correlation 就是一种类似余弦相似性的表示：
 
-<img src="../images/posts/CorrelationNetwork/3.png" style="zoom:70%;" />
+<img src="/images/posts/CorrelationNetwork/3.png" style="zoom:70%;" />
 
 (i',j') 一般被约束在与 (i,j) 距离不超过 K，也就是说 K is the maximal displacement for patch matching.
 
@@ -98,7 +98,7 @@ $$
 $$
 K^2 × H × W
 $$
-<img src="../images/posts/CorrelationNetwork/4.png" style="zoom:50%;" />
+<img src="/images/posts/CorrelationNetwork/4.png" style="zoom:50%;" />
 
 加入 learnable filter 后，correlation 的计算公式为：
 $$
@@ -110,7 +110,7 @@ $$
 
 K 对模型的影响：
 
-<img src="../images/posts/CorrelationNetwork/11.png" style="zoom:50%;" />
+<img src="/images/posts/CorrelationNetwork/11.png" style="zoom:50%;" />
 
 ### 番外：空洞卷积 (dilated convolution) 介绍
 
@@ -126,17 +126,17 @@ K 对模型的影响：
 
 ## Groupwise correlation operator
 
-<img src="../images/posts/CorrelationNetwork/7.png" style="zoom:50%;" />
+<img src="/images/posts/CorrelationNetwork/7.png" style="zoom:50%;" />
 
 ## From two images to a video clip
 
-<img src="../images/posts/CorrelationNetwork/8.png" style="zoom:50%;" />
+<img src="/images/posts/CorrelationNetwork/8.png" style="zoom:50%;" />
 
 只计算相邻帧的 correlation。
 
 对于给定的连续 L 帧 RGB 图片，correlation 与 3D 卷积的比较如下表，发现 correlation 模块引入了更少的参数来编码时序信息：
 
-<img src="../images/posts/CorrelationNetwork/6.png" style="zoom:60%;" />
+<img src="/images/posts/CorrelationNetwork/6.png" style="zoom:60%;" />
 
 用 correlation module 替换 3D卷积，既可以实现参数量降低，也可提高精度。
 
@@ -144,13 +144,13 @@ K 对模型的影响：
 
 ## R(2+1)D backbone
 
-<img src="../images/posts/CorrelationNetwork/9.png" style="zoom:40%;" />
+<img src="/images/posts/CorrelationNetwork/9.png" style="zoom:40%;" />
 
 CorrNet-26 is obtained by inserting one correlation-sum block after res-2, res-3 and res-4 of R(2+1)D-26 as described in Section 4.
 
 ## Correlation network
 
-<img src="../images/posts/CorrelationNetwork/10.png" style="zoom:40%;" />
+<img src="/images/posts/CorrelationNetwork/10.png" style="zoom:40%;" />
 
 # 5. Experimental Setups
 
@@ -158,7 +158,7 @@ CorrNet-26 is obtained by inserting one correlation-sum block after res-2, res-3
 
 ## 6.1. Correlation network vs baseline backbones
 
-<img src="../images/posts/CorrelationNetwork/12.png" style="zoom:70%;" />
+<img src="/images/posts/CorrelationNetwork/12.png" style="zoom:70%;" />
 
 不知参数量会增加多少，但肯定比多添加一个 Conv3D 要少一些。
 
@@ -170,7 +170,7 @@ correlation-sum 优于 correlation-concat
 
 > *我的问题：correlation-concat 差何处？*
 
-<img src="../images/posts/CorrelationNetwork/13.png" style="zoom:70%;" />
+<img src="/images/posts/CorrelationNetwork/13.png" style="zoom:70%;" />
 
 ## 6.3. Comparison to the state of the art
 
@@ -178,7 +178,7 @@ correlation-sum 优于 correlation-concat
 
 ## 6.4. Visualizing Correlation Filters
 
-<img src="../images/posts/CorrelationNetwork/14.png" style="zoom:70%;" />
+<img src="/images/posts/CorrelationNetwork/14.png" style="zoom:70%;" />
 
 **White arrows point to locations with highest weights**, showing that different filters learn to match pixels moving in different directions. 由此说明我们学习到了视频的 motion 信息。
 
