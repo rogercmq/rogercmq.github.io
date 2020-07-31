@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 论文笔记 -- Gate-Shift Networks for Video Action Recognition
+title: 论文笔记 -- Gate-Shift Networks for Video Action Recognition (未完待续)
 categories: [PaperNotes, ActionRecognition]
 description: 
 keywords: 
