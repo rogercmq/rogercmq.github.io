@@ -93,9 +93,9 @@ Motivation: Could we increase the performance just by reorder the sublayer modul
 
 ---
 
-# Universal Transformer
+# Universal Transformer: 解决演算法任务的通用Transformer结构
 
-## Motivation: Transformer 在演算法任务上超烂，通用性差
+**Motivation: Transformer 在演算法任务上超烂，通用性差**
 
 algorithmic task: 假设输入是abc，希望模型输出特定算法的pattern（比如输出的是复制三次的输入，即abcabcabc；或者reverse，即cba）。
 
@@ -123,5 +123,21 @@ algorithmic task: 假设输入是abc，希望模型输出特定算法的pattern�
 
 ---
 
-# 未完待续
+# Residual Shuffle Exchange Network: Shuffle + Exchange 取代 Attention
+
+perfect shuffle: 洗扑克牌
+
+<img src="../../images/transformer/10.png" style="zoom:50%;" />
+
+<img src="../../images/transformer/11.png" style="zoom:60%;" />
+
+<img src="../../images/transformer/12.png" style="zoom:50%;" />
+
+<img src="../../images/transformer/13.png" style="zoom:50%;" />
+
+
+
+---
+
+# BERT: B  E  R  T  永远滴神
 
