@@ -55,6 +55,29 @@ Multi-head Attention好处在于可以从以下两个方面提升模型：
 
 decoder 底端的自注意力层添加 mask: 由于 decoder 生成序列只能基于已有的序列，所以 self-attention 不能观察在该时刻之后的信息，于是 mask。
 
+
+
+---
+
+# 著名博客《The Illustrated Transformer》解读
+
+<img src="https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png" style="zoom:30%;" />
+
+编码组件是六层编码器首位相连堆砌而成，解码组件也是六层解码器堆成的。 最后一个编码器的输出将作为解码器自注意力模块的输入在六层解码器中反复横跳。
+
+<img src="http://jalammar.github.io/images/t/Transformer_decoder.png" style="zoom:63%;" />
+
+- The encoder’s inputs first flow through a self-attention layer – a layer that helps the encoder look at other words in the input sentence as it encodes a specific word.
+- The decoder has both those layers, but between them is an attention layer that helps the decoder focus on relevant parts of the input sentence (similar what attention does in seq2seq models).
+
+<img src="/images/transformer/transformer-1.png" style="zoom:100%;" />
+
+<img src="/images/transformer/transformer-2.png" style="zoom:100%;" />
+
+
+
+---
+
 # Sandwich Transformer: Empirically 为 Transformer 的设计提供 insights
 
 Motivation: Could we increase the performance just by reorder the sublayer module ?
@@ -65,6 +88,10 @@ Motivation: Could we increase the performance just by reorder the sublayer modul
 2. No extra parameters, memory requirement.
 
 <img src="/images/transformer/8.png" style="zoom:100%;" />
+
+
+
+---
 
 # Universal Transformer
 
@@ -91,6 +118,10 @@ algorithmic task: 假设输入是abc，希望模型输出特定算法的pattern�
 ![](https://picb.zhimg.com/80/v2-657e3d42c13f256ede5e279d606325e5_720w.jpg)
 
 <img src="/images/transformer/9.png" style="zoom:60%;" />
+
+
+
+---
 
 # 未完待续
 
