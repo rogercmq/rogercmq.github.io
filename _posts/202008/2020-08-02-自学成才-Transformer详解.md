@@ -127,17 +127,12 @@ algorithmic task: 假设输入是abc，希望模型输出特定算法的pattern�
 
 perfect shuffle: 洗扑克牌
 
-<img src="../../images/transformer/10.png" style="zoom:50%;" />
+<img src="/images/transformer/10.png" style="zoom:50%;" />
 
-<img src="../../images/transformer/11.png" style="zoom:60%;" />
+<img src="/images/transformer/11.png" style="zoom:60%;" />
 
-<img src="../../images/transformer/12.png" style="zoom:50%;" />
+<img src="/images/transformer/12.png" style="zoom:50%;" />
 
-<img src="../../images/transformer/13.png" style="zoom:50%;" />
+<img src="/images/transformer/13.png" style="zoom:50%;" />
 
-
-
----
-
-# BERT: B  E  R  T  永远滴神
 
