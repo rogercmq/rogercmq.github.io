@@ -5,10 +5,13 @@
 #      - Python
 #      - Design Patterns
 
-- name: 本科四年
+- name: 本科四年学了点啥
   keywords:
-      - PyTorch
+      - PyTorch (Network Pruning Algorithm Design)
       - MySQL
+      - C++
+      - Scrapy (Crawler for Python)
+      - JavaScript (for WeChat Mini Programs)
 
 #- name: Windows Developer Keywords
 #  keywords:
