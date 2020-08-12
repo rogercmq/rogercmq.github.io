@@ -8,7 +8,9 @@ keywords:
 
 Gate-Shift Networks for Video Action Recognition (CVPR2020), 本篇笔记在 Related Works 部分做了疯狂总结.
 
-作者提出了一个轻量级模块 Gate-Shift Module (GSM)，将 2D 卷积替换为高效的 spatio-temporal feature extractor。并且相较于hardwired的channel-wise拆分方案（具体工作见本笔记第二章关于 ST Modeling 的介绍）， 本工作提出的gate机制更dynamic。 
+作者提出了一个轻量级模块 Gate-Shift Module (GSM)，将 2D 卷积替换为高效的 spatio-temporal feature extractor。并且相较于 hardwired 的 channel-wise 拆分方案（具体工作见本笔记第二章关于 ST Modeling 的介绍）， 本工作提出的 data-dependent gate 机制更 dynamic。 本人认为该工作过于 empirical，是 Han Song 课题组 TSM 的改良版，用一个3x3x3卷积去选择 temporal shift 的 pattern。
+
+<img src="/images/posts/GSM/3.png" style="zoom:80%;" />
 
 <img src="/images/posts/GSM/0.png" style="zoom:50%;" />
 
@@ -160,3 +162,39 @@ Figure 1 描述了几种3D卷积神经网络解耦方案。方案 1-5 的架构�
 
 # 3. Gate-Shift Networks
 
+<img src="/images/posts/GSM/4.png" style="zoom:50%;" />
+
+1. **RGB输入先通过C2D卷积**
+2. **绿色的Gate模块**
+
+<img src="/images/posts/GSM/1.JPG" style="zoom:80%;" />
+
+<img src="/images/posts/GSM/5.png" style="zoom:60%;" />
+
+backbone 网络用的是王利民老师的 TSN 方法，也就是全2D网络，但是输入不再是双流，而是一组连续帧，最后 predict the action by average pooling the frame level (now spatio-temporal) scores。
+
+本来认为会在 tanh 这里设置阈值，比如L1范数绝对值超过 0.5 就根据正负号进行 temporal shift，但是我好像想多了，因为本工作在整个BN-Inception block上只修改了其中某一个卷积层。。。
+
+为什么用tanh不用sigmoid（二者都是激活在[-1,1]区间的非线性函数）？作者在4.3节消融实验发现tanh更好。
+
+为什么把GSM加在图中标记的位置？作者在4.3节做了消融实验发现 GSM is most suited to be added
+inside the branch which contains the least number of convolutions.
+
+# 4. Experiments and Results
+
+1. Something-Something-V1
+2. Diving48
+
+3. EPIC-Kitchens
+
+<img src="/images/posts/GSM/6.png" style="zoom:60%;" />
+
+## 4.5. Discussion
+
+<img src="/images/posts/GSM/7.png" style="zoom:60%;" />
+
+> From the figure, it can be seen that the network has enhanced its ability to distinguish between action classes that are similar in appearance, such as Unfolding something and Folding something, Putting something infront of something and Removing something, revealing something behind, etc. 
+
+Baseline TSN 方法失败的地方是一旦出现 "Folding something" 和 "Unfolding something" 这种内容相似但是顺序相反的 action 就不行。在测试数据集上，故意地将视频帧按照相反的顺序输入到模型内，TSN 精度几乎不变但是 GSM 精度掉点严重。
+
+<img src="/images/posts/GSM/8.png" style="zoom:60%;" />
