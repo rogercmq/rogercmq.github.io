@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 论文笔记 -- Gate-Shift Networks for Video Action Recognition (未完待续)
+title: 论文笔记 -- Gate-Shift Networks for Video Action Recognition (精品)
 categories: [PaperNotes, ActionRecognition]
 description: 
 keywords: 
@@ -88,6 +88,10 @@ Figure 1 描述了几种3D卷积神经网络解耦方案。方案 1-5 的架构�
 
 ---
 
-## 未完待续 Video as a space-time volume
+## Video as a space-time volume
+
+
+
+
 
 ## Spatial-temporal modeling
